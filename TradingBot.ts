@@ -425,7 +425,7 @@ function getTradeSize( product: string, price: BigNumber): BigNumber {
 function rsiBuyTest(priceEst: number): boolean {
     let rsiPrev: number = rsi.result[rsi.result.length - 1]; 
     let rsiEst: number = rsi.nextValue(priceEst);
-    return  (rsiPrev < RSILIMIT) && ( percentChg( rsiEst, rsiPrev) >= STRICTNESS);
+    return  (// where my test trading logic goes
 
 }
 
@@ -438,14 +438,14 @@ function rsiSellTest(priceEst: number):boolean {
 function macdTest(priceEst: number):boolean {
     let macdPrev: any = macd.result[macd.result.length - 1]; 
     let macdEst: any = macd.nextValue(priceEst);
-    return  ((macdPrev.MACD < MACDLIMIT) && (macdPrev.histogram < MACDHISTLIMIT) && ( percentChg( macdEst.histogram, macdPrev.histogram) >= STRICTNESS) );
+    return  // where my test trading logic goes
 
 }
 
 function cciTest(candle: CandleData):boolean {
     let cciPrev: number = cci.result[cci.result.length - 1]; 
     let cciEst: number = cci.nextValue(candle);
-    return  ((cciPrev < CCILIMIT) && ( percentChg( cciEst, cciPrev) >= STRICTNESS) );
+    return  // where my test trading logic goes
 
 }
 
