@@ -1,0 +1,125 @@
+soudo code
+
+create rsi
+create cci
+create macd
+create sell array
+crate buy array
+activeOrder boolean
+
+
+
+	get ticker message
+	get prev rsi cci macd
+	calculate new real time rsi macd cci
+
+	
+	initial test of rsi cci and macd
+		secondary test of rsi cci and macd
+			if no orders are active
+				set limit buy order
+				update active buy order
+				insert Trades
+					create new trade id
+					create Trade array 
+				create new buyReceipts array
+				Set SellTrigger on buy fill
+			else
+				insert unexecuted buys
+
+	SellTrigger event listener for buy order filled
+		update buyRecipts array
+		insert to buy Receipts 
+		set limit sell order
+		create new sell array
+		create sell filled event listener
+
+	event sell filled
+		update activeorder
+		update sellRecipts array
+		insert to sellRecipts
+
+	event 1 min closing
+		update database
+		update indicators
+
+
+rsi object
+	private prevRSI
+	private prevAvgGain
+	private	prevAvgLoss
+
+
+Methods
+	.constructor() 			// populate fields
+	.prev() 				// return previous rsi
+	.calc(price: Double) 		// return real time rsi
+.calc(OHLC:OHLC) 		// return real time rsi
+	.update() 			//update database/object to latest OHLC values
+	.test(price: Double, OHLC: OHLC) // return boolean of buy condition
+	.newAvgGain(price: Double) // return new average  gain given value
+	.newAvgLoss(price: Double) // return new average  gain given value
+	.newAvgGain(OHLC: OHLC)	// return new average  gain given value
+	.newAvgLoss(OHLC: OHLC) // return new average  gain given value
+.rs(avgGain: double, avgLoss: double) // return new Relative Strength value
+.rsi(RS: double) // return smoothed Relative Strength
+	
+cci object
+
+Private prevCCI: double
+Private prev19tp: queue
+Private const constant: double 
+
+Methods
+	.constructor() 				// populate fields
+	.prev() 					// retrieve previous 
+	.update() 				//update database/object to latest OHLC values
+	.calc(price: double) 			//return new value at given data
+.calc(OHLC: OHLC) 			//return new value at given data
+	.test(price: double) 			// return boolean of buy condition
+	.newTP(OHLC: OHLC)	 	// return new Typical Price (H+L+C)/3
+	.newMeanDeviation(OHLC: OHLC) // return new mean deviation at given value
+
+EMA object
+
+Private const multiplier: double
+Prev ema
+Private emaLength
+
+
+
+Methods
+	.constructor() 				// populate fields
+	.prev() 					// retrieve previous 
+.update() 				//update database/object to latest OHLC values
+.calc(price: double) 			// calculate new value at given data
+.calc(OHLC: OHLC) 			// calculate new value at given data
+.calc(price: double, ema: double)	// calculate new value at given data
+.calc(OHLC: OHLC, ema: double) 	// calculate new value at given data
+.ema() // return ema length
+
+MACD object
+
+private prevHistogram
+Private prevSignalLine
+Privat prev macdLine
+
+Private ema1
+Private ema2
+Private ema3
+
+Methods
+	.constructor() 		// populate fields
+	.prevHistogram() 	// return prev Histogram value
+	.prevSignalLine() 	// return prev Signal Line value
+	.prevMACDLine()	 // return prev MACD Line value
+	.update() 		//update database/object to latest OHLC values
+	.calc(price: double) 	// calculate new value at given data
+.calc(OHLC: OHLC) 	// calculate new value at given data
+
+
+
+
+
+		
+
