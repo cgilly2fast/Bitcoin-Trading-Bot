@@ -44,6 +44,7 @@ activeOrder boolean
 		update indicators
 
 
+
 rsi object
 	private prevRSI
 	private prevAvgGain
@@ -79,6 +80,21 @@ Methods
 	.test(price: double) 			// return boolean of buy condition
 	.newTP(OHLC: OHLC)	 	// return new Typical Price (H+L+C)/3
 	.newMeanDeviation(OHLC: OHLC) // return new mean deviation at given value
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 EMA object
 
